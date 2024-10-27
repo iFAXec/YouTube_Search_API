@@ -1,7 +1,7 @@
-// https://www.googleapis.com/youtube/v3/search?part=snippet&q=travel&key=AIzaSyDiuzQymgMZUkmEphXYni5CaGE11Gwbgcw
+let myKey = config.MY_KEY;
 
 
-fetch('https://www.googleapis.com/youtube/v3/search?part=snippet&q=travel&key=AIzaSyDiuzQymgMZUkmEphXYni5CaGE11Gwbgcw')
+fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=travel&key=` + myKey)
     .then(response => {
         // network failure, request prevented
         if (response.status >= 200 && response.status < 300) {
@@ -25,5 +25,5 @@ fetch('https://www.googleapis.com/youtube/v3/search?part=snippet&q=travel&key=AI
 //         console.log("🚀 ~ resData:", resData);
 //     }
 // };
-// xhttp.open("GET", "https://www.googleapis.com/youtube/v3/search?part=snippet&q=travel&key=AIzaSyDiuzQymgMZUkmEphXYni5CaGE11Gwbgcw", true);
+// xhttp.open("GET", "https://www.googleapis.com/youtube/v3/search?part=snippet&q=travel&key=" + myKey, true);
 // xhttp.send();
