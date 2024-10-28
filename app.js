@@ -1,7 +1,6 @@
 let myKey = config.MY_KEY;
 
-
-fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=travel&key=` + myKey)
+fetch('https://www.googleapis.com/youtube/v3/search?part=snippet&q=travel&key=' + myKey)
     .then(response => {
         // network failure, request prevented
         if (response.status >= 200 && response.status < 300) {
@@ -9,10 +8,25 @@ fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=travel&key=` 
         }
     })
     .then(data => {
-        console.log("🚀 ~ data:", data);
-        document.getElementById('res').innerHTML = JSON.stringify(data);
-    })
+        // console.log(data)
+        const videoData = data.items.map((item)=>{
+            return item.snippet;
+        });
 
+        console.log(videoData)
+        
+        const videoContainer = document.getElementById('video-container');               
+        const videoDiv = document.createElement('div');
+        videoData.forEach(video => {
+           videoDiv.innerHTML = `
+           <img src=${video.thumbnails.high.url}>
+           `
+        
+       });
+
+        videoContainer.appendChild(videoDiv);
+
+    });
 
 
 
